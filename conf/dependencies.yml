@@ -2,3 +2,12 @@
 
 require:
     - play
+    - play -> search 2.0
+    - play -> table 1.2.1
+    - play -> router 1.1
+    - play -> paginate head
+    - play -> db 1.1.1
+    - play -> html5validation 1.2.2
+    - play -> menu 1.0c
+    - play -> migrate 1.4
+    - play -> messages 1.1.1
