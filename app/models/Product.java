@@ -15,7 +15,7 @@ public class Product extends Model {
 
 	@Required
 	@MaxSize(value = 256)
-	public String key;
+	public String key_name;
 
 	@Required
 	@MaxSize(value = 256)

@@ -9,7 +9,7 @@ import play.db.jpa.Model;
 @Entity
 public class Category extends Model {
 	@Required
-	public String key;
+	public String key_name;
 
 	@Required
 	@MaxSize(value = 32)
