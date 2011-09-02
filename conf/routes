@@ -17,5 +17,5 @@ GET     /images/                                staticDir:public/images
 *       /{controller}/{action}                  {controller}.{action}
 
 # admin
-
+*      	/admin              					module:crud
 *		/admin/{controller}/{action}			admin.{controller}.{action}

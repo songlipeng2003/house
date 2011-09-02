@@ -1,0 +1,77 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+
+
+#
+# Default CRUD messages
+# ~~~~~~
+
+crud.title=后台管理
+crud.home=首页
+crud.blank=新建
+crud.index.title=选择要编辑的对象
+crud.index.objectType=对象类型
+crud.index.action=操作
+crud.index.add=添加
+crud.add=添加&{%s}
+crud.list.title=&{%s}
+crud.list.size=%d &{%s}
+crud.list.totalSize=%d total
+crud.pagination.previous=« 上一页
+crud.pagination.next=下一页 »
+crud.pagination.last=最后一页 »»
+crud.pagination.first=«« 第一页
+crud.show.title=编辑&{%s}
+crud.save=保存
+crud.saveAndContinue=保存并继续编辑
+crud.cancel=取消
+crud.hasErrors=请修改错误
+crud.blank.title=添加 &{%s}
+crud.saveAndAddAnother=保存并创建
+crud.delete=Delete &{%s}
+crud.created=&{%s} 已经创建
+crud.saved=&{%s} 已经保存
+crud.deleted=&{%s} 已经删除
+crud.delete.error=不能保存这个对象
+crud.search=搜素
+crud.none=(空)
+crud.selectValue=(请选择一个值)
+
+crud.help.required=必须填写.
+crud.help.minlength=最小长度是 %d.
+crud.help.maxlength=最大长度是 %d.
+crud.help.email=非法的Email地址.
+crud.help.dateformat=必须为&{%s}格式.
+crud.help.numeric=必须为数字.
+crud.help.min=必须大于 %d.
+crud.help.future=必须为未来.
+crud.help.past=必须为过去.
+crud.help.after=%s之后.
+crud.help.before=%s之前.
+crud.help.range=在 %d 和 %d 之间.
+
+
+#common model
+key_name=唯一标识
+
+#Country model
+Country=国家
+Countries=国家
+
+#User model
+User=用户
+Users=用户
+username=用户名
+email=Email
+password=密码
+firstName=名
+lastName=姓
+
+#Category model
+Category=类别
+Categories=类别
+
+#Product model
+Product=产品
+Products=产品
+category=类别

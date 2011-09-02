@@ -32,10 +32,10 @@ public class Seller extends GenericModel {
 
 	@Required
 	@MaxSize(value = 256)
-	public String companyname;
+	public String companyName;
 	@Required
 	@MaxSize(value = 256)
-	public String companyaddress;
+	public String companyAddress;
 
 	public String bank;
 	public String banknum;
