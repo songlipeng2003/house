@@ -24,7 +24,7 @@ public class Seller extends GenericModel {
 	@Id
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = { @Parameter(name = "property", value = "user") })
 	@GeneratedValue(generator = "generator")	
-	public Long userid;
+	public Long userId;
 
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@PrimaryKeyJoinColumn
@@ -38,6 +38,6 @@ public class Seller extends GenericModel {
 	public String companyAddress;
 
 	public String bank;
-	public String banknum;
+	public String bankNum;
 
 }
