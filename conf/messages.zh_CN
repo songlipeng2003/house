@@ -26,33 +26,70 @@ crud.save=保存
 crud.saveAndContinue=保存并继续编辑
 crud.cancel=取消
 crud.hasErrors=请修改错误
-crud.blank.title=添加 &{%s}
+crud.blank.title=添加&{%s}
 crud.saveAndAddAnother=保存并创建
 crud.delete=Delete &{%s}
-crud.created=&{%s} 已经创建
-crud.saved=&{%s} 已经保存
-crud.deleted=&{%s} 已经删除
+crud.created=&{%s}已经创建
+crud.saved=&{%s}已经保存
+crud.deleted=&{%s}已经删除
 crud.delete.error=不能保存这个对象
 crud.search=搜素
 crud.none=(空)
 crud.selectValue=(请选择一个值)
 
 crud.help.required=必须填写.
-crud.help.minlength=最小长度是 %d.
-crud.help.maxlength=最大长度是 %d.
+crud.help.minlength=最小长度是%d位.
+crud.help.maxlength=最大长度是%d位.
 crud.help.email=非法的Email地址.
 crud.help.dateformat=必须为&{%s}格式.
 crud.help.numeric=必须为数字.
-crud.help.min=必须大于 %d.
+crud.help.min=必须大于%d.
 crud.help.future=必须为未来.
 crud.help.past=必须为过去.
 crud.help.after=%s之后.
 crud.help.before=%s之前.
-crud.help.range=在 %d 和 %d 之间.
+crud.help.range=在%d和%d之间.
+
+# For use in JavaExtensions.since tag
+since.seconds = %s second%s ago
+since.minutes = %s minute%s ago
+since.hours   = %s hour%s ago
+since.days    = %s day%s ago
+since.months  = %s month%s ago
+since.years   = %s year%s ago
+since.format  = MMM d, yyyy
+
+# Validation messages
+validation.required=必须填写
+validation.minSize=最小长度是%2$d位
+validation.maxSize=最大长度是%2$d位
+validation.email=非法的Email地址
+validation.range=不在%2$d到%3$d之间
+validation.min=不能小于%2$d
+validation.max=不能大于%2$d
+validation.match=必须匹配%2$s
+validation.isTrue=必须选择
+validation.equals=必须等于&{%2$s}
+validation.invalid=非法的值
+validation.future=必须在未来
+validation.after=必须在%2$s以后
+validation.past=必须在过去
+validation.before=必须在%2$s以后
+validation.object=验证失败
+validation.notFound=找不到对象%2$s
+validation.url=不是合法的URL
+validation.phone=不是合法的电话
+validation.ipv4=不是合法的IP地址
+validation.ipv6=不是合法的IPv6地址
 
 
 #common model
-key_name=唯一标识
+key=唯一标识
+name=名称
+sortOrder=排序
+parent=上一级
+created=创建时间
+updated=更新时间
 
 #Country model
 Country=国家
@@ -61,11 +98,16 @@ Countries=国家
 #User model
 User=用户
 Users=用户
+country=国家
 username=用户名
 email=Email
 password=密码
 firstName=名
 lastName=姓
+lastLogin=最后登录
+loginTimes=登录次数
+lastIp=最后登录Ip
+isAdmin=是否是管理员
 
 #Category model
 Category=类别
