@@ -14,6 +14,7 @@ import play.data.validation.MaxSize;
 import play.data.validation.Password;
 import play.data.validation.Required;
 import play.db.jpa.Model;
+import utils.StringUtils;
 
 @Entity
 public class User extends Model {

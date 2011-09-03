@@ -12,4 +12,9 @@ public class Country extends Model {
 	@Required
 	@MaxSize(value = 64)
 	public String name;
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }
