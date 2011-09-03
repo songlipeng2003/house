@@ -6,11 +6,11 @@
     <h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>
 
     <div id="crudListSearch">
-        #{crud.search /}
+        #{crud.search fields:['username', 'email']/}
     </div>
 
     <div id="crudListTable">
-        #{crud.table fields:['username', 'email']/}
+        #{crud.table fields:['username', 'email', 'created', 'lastLogin', 'loginTimes', 'isAdmin']/}
     </div>
 
     <div id="crudListPagination">

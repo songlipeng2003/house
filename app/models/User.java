@@ -4,12 +4,17 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import play.data.validation.Email;
 import play.data.validation.MaxSize;
+import play.data.validation.Password;
 import play.data.validation.Required;
 import play.db.jpa.Model;
+import utils.StringUtils;
 
 @Entity
 public class User extends Model {
@@ -21,9 +26,11 @@ public class User extends Model {
 
 	@Required
 	@MaxSize(value = 64)
+	@Password
 	public String password;
 
 	@Required
+	@Email
 	@MaxSize(value = 64)
 	public String email;
 
@@ -32,17 +39,29 @@ public class User extends Model {
 
 	@MaxSize(value = 32)
 	public String lastName;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date created;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date updated;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date lastLogin;
-	
+
+	public Integer loginTimes = 0;
+
 	public String lastIp;
-	
-	public Boolean isAdmin;
+
+	public Boolean isAdmin = false;
+
+	@PrePersist
+	void onPrePersist() {
+		created = new Date();
+	}
+
+	@PreUpdate
+	void onPreUpdate() {
+		updated = new Date();
+	}
 }
