@@ -39,5 +39,7 @@ public class Seller extends GenericModel {
 
 	public String bank;
 	public String bankNum;
+	
+	public String phone;
 
 }

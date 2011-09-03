@@ -1,0 +1,6 @@
+#{extends 'main.html' /} 
+#{set title:'Successful' /}
+
+#{if flash.success}
+    <p class="success">${flash.success}</p>
+#{/if}
