@@ -10,7 +10,7 @@ import play.db.jpa.Model;
 public class Config extends Model {
 	@Required
 	@MaxSize(256)
-	public String key;
+	public String key_name;
 
 	@Required
 	@MaxSize(64000)
