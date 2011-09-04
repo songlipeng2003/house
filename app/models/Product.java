@@ -23,7 +23,7 @@ public class Product extends Model {
 
 	@Required
 	@MaxSize(value = 256)
-	public String key_name;
+	public String key;
 
 	@Required
 	@MaxSize(value = 256)
@@ -43,7 +43,7 @@ public class Product extends Model {
 	public Date updated;
 
 	public Boolean isOn;
-	
+
 	@Required
 	@Min(1)
 	public Double price;

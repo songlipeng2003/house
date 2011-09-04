@@ -14,7 +14,7 @@ public class Shop extends Model {
 	@ManyToOne
 	public User user;
 	
-	public String key_name;
+	public String key;
 	
 	public String name;
 	
