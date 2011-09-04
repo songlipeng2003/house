@@ -4,36 +4,50 @@
 <h2>Register</h2>
 #{ifErrors}
 <p>Oops…</p>
-#{/ifErrors} #{form @buyer.Member.reg()}
-<p>
-	<label for="author">Username: </label><font color="red">*</font> <input
-		type="text" name="user.username" id="username"
-		value="${flash['user.username']}" /> <span class="error">#{error 'user.username' /}</span>
-</p>
-<p>
-	<label for="author">Email Address: </label><font color="red">*</font> <input
-		type="text" name="user.email" id="email"
-		value="${flash['user.email']}" /> <span class="error">#{error 'user.email' /}</span>
-</p>
-<p>
-	<label for="content">First name: </label><input type="text"
-		name="user.firstName" id="firstName" value="${flash['firstName']}" />
-	<span class="error">#{error 'user.firstName' /}</span>
-</p>
-<p>
-	<label for="content">Last name: </label><input type="text"
-		name="user.lastName" id="lastName" value="${flash['lastName']}" /> <span
-		class="error">#{error 'user.lastName' /}</span>
-</p>
-<p>
-	<label for="author">Password: </label><font color="red">*</font> <input
-		type="password" name="user.password" id="password" /> <span class="error">#{error 'user.password' /}</span>
-</p>
-<p>
-	<label for="author">Re - enter password: <font color="red">*</font>
-	</label> <input type="password" name="repassword" id="repassword" /><span class="error">#{error 'repassword' /}</span>
-</p>
-<p>
-	<input type="submit" value="Create New Account" />
-</p>
+#{/ifErrors} 
+#{form @buyer.Member.reg()}
+
+	#{field 'user.username'}
+	<p class="${field.errorClass}">
+		<strong>Username: </strong><font color="red">*</font> <input
+			type="text" name="${field.name}" id="username"
+			value="${flash['user.username']}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'user.email'}
+	<p class="${field.errorClass}">
+		<strong>Email Address: </strong><font color="red">*</font> <input
+			type="text" name="${field.name}" id="email"
+			value="${flash['user.email']}" /> <span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'user.firstName'}
+	<p class="${field.errorClass}">
+		<strong>First name: </strong><input type="text"
+			name="${field.name}" id="firstName" value="${flash['firstName']}" />
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'user.lastName'}
+	<p class="${field.errorClass}">
+		<strong>Last name: </strong><input type="text"
+			name="${field.name}" id="lastName" value="${flash['lastName']}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'user.password'}
+	<p class="${field.errorClass}">
+		<strong>Password: </strong><font color="red">*</font> <input
+			type="password" name="${field.name}" id="password" /> <span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'repassword'}
+	<p class="${field.errorClass}">
+		<strong>Re - enter password:</strong> <font color="red">*</font>
+		 <input type="password" name="${field.name}" id="repassword" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p>
+		#{authenticityToken /}
+		<input type="submit" value="Create New Account" />
+	</p>
 #{/form}

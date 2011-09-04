@@ -11,7 +11,22 @@
         #{get 'moreScripts' /}
     </head>
     <body>
-    	<div class="nav_hre" style="float: right;"><a href="/user/register">Join free</a> &nbsp;Already have an account&nbsp;<a href="/user/login">Sign in</a></div>
+    	<div id="header">
+	    	<div class="nav_hre" style="float: right;">
+	    	#{if session.userid }
+	    		Welcome ${session.username} ! | <a href="@{buyer.Member.index()}">My Account</a> | <a href="@{buyer.Member.logout()}">Logout</a>
+	    	#{/if}
+	    	#{else}
+	    	<a href="@{buyer.Member.register()}">Join free</a> &nbsp;Already have an account&nbsp;<a href="@{buyer.Member.login()}">Sign in</a>
+	    	#{/else}
+	    	</div>
+	    	<h2>House</h2>
+    	</div>
+    	<div id="content">
         #{doLayout /}
+        </div>
+        <div id="footer">
+            Created with <a href="http://www.playframework.org">play framework</a> and really inspirated from the booking sample application provided by <a href="http://seamframework.org/">seam framework</a>
+        </div>
     </body>
 </html>

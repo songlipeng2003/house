@@ -1,0 +1,15 @@
+#{extends 'main.html' /} 
+#{set title:'My Account Index' /}
+
+<div id="left_menu">
+	<ul>
+		<li><a href="@{buyer.Member.orderlist()}" title="my orders">My Orders</a></li>
+		<li><a href="@{buyer.Member.favoritelist()}" title="my favorite management">My Favorite</a></li>
+		<li><a href="@{buyer.Member.addresslist()}" title="my address ">My Address</a></li>
+		<li><a href="@{buyer.Member.setting()}" title="my infomation setting">My Infomatoin</a></li>
+		<li><a href="@{buyer.Member.messagelist()}" title="my internal messages">Messages</a></li>
+	</ul>
+</div>
+<div id="right_user">
+#{doLayout /}
+</div>

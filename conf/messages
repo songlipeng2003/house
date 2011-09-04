@@ -1,3 +1,4 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+validation.unique=The value(&{%2$s}) was used,please selected another.

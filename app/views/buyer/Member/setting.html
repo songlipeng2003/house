@@ -1,0 +1,88 @@
+#{extends 'buyer/layout.html' /} 
+#{set title:'Index' /}
+
+<h2>Infomation Settings</h2>
+
+<div class="tab">
+	<span><a href="#" onclick="$('#baseinfodiv').show();$('#changepassdiv').hide();"><strong>Baseinfo</strong></a></span>
+	<span><a href="#" onclick="$('#baseinfodiv').hide();$('#changepassdiv').show();"><strong>Change Your Password</strong></a></span>
+</div>
+<p>
+#{ifErrors}
+Oops…<br/>
+#{/ifErrors} 
+#{if flash.error}
+<span class="error">${flash.error}</span>
+#{/if}
+</p>
+
+#{if flash.success}
+    <p class="success">${flash.success}</p>
+#{/if}
+<div id="baseinfodiv" >
+#{form @buyer.Member.savebasesetting() , id:'baseinfo'}
+	<p>
+		<strong>Username:</strong>  ${user.username}
+	</p>
+	<p>
+		<strong>Email Address: </strong>${user.email}
+	</p>
+	#{field 'firstName'}
+	<p class="${field.errorClass}">
+		<strong>First name: </strong><input type="text"
+			name="${field.name}" id="firstName" value="${user.firstName}" />
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'lastName'}
+	<p class="${field.errorClass}">
+		<strong>Last name: </strong><input type="text"
+			name="${field.name}" id="lastName" value="${user.lastName}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'country.id'}
+	<p class="${field.errorClass}">
+		<strong>Select your country: </strong>
+		#{select name:'country.id',items:countrys,value:user.country.id} 
+		#{/select} 
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p>
+		<input type="submit" value="Save" />
+	</p>
+#{/form}
+</div>
+<div id="changepassdiv" style="display: none;">
+#{form @buyer.Member.savepasssetting() , id:'changepass'}
+	#{field 'oldpassword'}
+	<p class="${field.errorClass}">
+		<strong>Old password: </strong><font color="red">*</font> <input
+			type="password" name="${field.name}" id="oldpassword" /> <span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'password'}
+	<p class="${field.errorClass}">
+		<strong>New Password: </strong><font color="red">*</font> <input
+			type="password" name="${field.name}" id="password" /> <span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'repassword'}
+	<p class="${field.errorClass}">
+		<strong>Re - enter password:</strong> <font color="red">*</font>
+		 <input type="password" name="${field.name}" id="repassword" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p>
+		<input type="submit" value="Change " />
+	</p>
+#{/form}
+</div>
+#{if show=='changepass'}
+<script type="text/javascript">
+<!--
+$('#baseinfodiv').hide();
+$('#changepassdiv').show();
+//-->
+</script>
+#{/if}

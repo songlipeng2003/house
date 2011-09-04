@@ -15,6 +15,7 @@ import play.data.validation.Password;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 import utils.StringUtils;
+import validation.Unique;
 
 @Entity
 public class User extends Model {
@@ -22,6 +23,7 @@ public class User extends Model {
 	public Country country;
 
 	@MaxSize(value = 32)
+	@Unique
 	public String username;
 
 	@Required
@@ -31,6 +33,7 @@ public class User extends Model {
 
 	@Required
 	@Email
+	@Unique
 	@MaxSize(value = 64)
 	public String email;
 
