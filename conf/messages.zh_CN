@@ -81,6 +81,7 @@ validation.url=不是合法的URL
 validation.phone=不是合法的电话
 validation.ipv4=不是合法的IP地址
 validation.ipv6=不是合法的IPv6地址
+validation.unique=已经存在
 
 
 #common model
