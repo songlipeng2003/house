@@ -13,10 +13,10 @@ GET     /public/                                staticDir:public
 
 GET     /images/                                staticDir:public/images
 
-# Catch all
-*		/user/{action}							buyer.member.{action}
-*       /{controller}/{action}                  {controller}.{action}
-
 # admin
 *      	/admin              					module:crud
 *		/admin/{controller}/{action}			admin.{controller}.{action}
+
+# Catch all
+*		/user/{action}							buyer.member.{action}
+*       /{controller}/{action}                  {controller}.{action}
