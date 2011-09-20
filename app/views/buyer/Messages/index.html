@@ -1,0 +1,42 @@
+#{extends 'buyer/layout.html' /} 
+#{set title:'My Messages' /}
+
+<h2>My Messages</h2>
+#{if flash.error}
+<p><span class="error">${flash.error}</span></p>
+#{/if}
+#{if flash.success}
+<p><span class="success">${flash.success}</span></p>
+#{/if}
+<a href="@{send('aa')}">Send</a>
+<table>
+	<thead>
+		<tr>
+			<th>Index</th>
+			<th>Title</th>
+			<th>Content</th>
+			<th>Sender</th>
+			<th>Time</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		#{if mails && mails.size()>0}
+	    #{list mails, as:'message'}
+	    <tr>
+	    	<td>${message_index}</td>
+   			<td>${message.title}</td>
+   			<td>${message.content}</td>
+   			<td>${message.sender.username}</td>
+   			<td>${message.created}</td>
+   			<td><a href="@{delete(message.id)}" onclick="return confirm('Are you sure to delete this message?');">Delete</a></td>
+   		</tr>
+	    #{/list}
+	    #{/if}
+	    #{else}
+	    	<tr>
+	    		<td colspan="6">No Messages Here.</td>
+	    	</tr>
+	    #{/else}
+	</tbody>
+</table>

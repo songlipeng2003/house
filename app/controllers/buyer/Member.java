@@ -87,8 +87,7 @@ public class Member extends Controller {
 				.key("password");
 		User user = getSessionUser();
 		validation.equals(user.password, oldpassword)
-				.message("Old password are not correct").key("oldpassword")
-				.key("oldpassword");
+				.message("Old password are not correct").key("oldpassword");
 		renderArgs.put("show", "changepass");
 		if (validation.hasErrors()) {
 			render("@setting", user);
@@ -160,7 +159,7 @@ public class Member extends Controller {
 			params.flash(); // add http parameters to the flash scope
 			login();
 		}
-		user.lastIp = request.host;
+		user.lastIp = request.remoteAddress;
 		user.lastLogin = new Date();
 		user.loginTimes = user.loginTimes + 1;
 		user.save();

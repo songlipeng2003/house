@@ -67,4 +67,8 @@ public class User extends Model {
 	void onPreUpdate() {
 		updated = new Date();
 	}
+
+	public static User findByUsername(String username) {
+		return User.find("byUsername", username).first();
+	}
 }

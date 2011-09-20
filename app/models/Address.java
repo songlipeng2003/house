@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -13,19 +15,15 @@ import play.db.jpa.Model;
 
 @Entity
 public class Address extends Model {
-	@Required
 	@ManyToOne
 	public Country country;
 
-	@Required
 	@ManyToOne
 	public User user;
 
-	@Required
 	@MaxSize(value = 256)
 	public String province;
 
-	@Required
 	@MaxSize(value = 256)
 	public String city;
 
@@ -50,4 +48,14 @@ public class Address extends Model {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date updated;
+
+	@PrePersist
+	void onPrePersist() {
+		created = new Date();
+	}
+
+	@PreUpdate
+	void onPreUpdate() {
+		updated = new Date();
+	}
 }

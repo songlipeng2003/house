@@ -1,0 +1,47 @@
+#{extends 'buyer/layout.html' /} 
+#{set title:'My Addresses' /}
+
+<h2>My Addresses</h2>
+<h3><a href="@{buyer.addresses.form()}">Add</a></h3>
+#{if flash.error}
+<p><span class="error">${flash.error}</span></p>
+#{/if}
+#{if flash.success}
+<p><span class="success">${flash.success}</span></p>
+#{/if}
+<table>
+	<thead>
+		<tr>
+			<th>Index</th>
+			<th>First name</th>
+			<th>Last name</th>
+			<th>Country</th>
+			<th>Address</th>
+			<th>Phone</th>
+			<th>Edit</th>
+		</tr>
+	</thead>
+	<tbody>
+		#{if addresses && addresses.size()>0}
+	    #{list addresses, as:'address'}
+	    <tr>
+	    	<td>${address_index}</td>
+   			<td >${address.firstName}</td>
+   			<td >${address.lastName}</td>
+   			<td >${address.country?.name}</td>
+   			<td >${address.address}</td>
+   			<td >${address.phone}</td>
+   			<td><a href="@{form(address.id)}">Edit</a>&nbsp;&nbsp;<a href="@{delete(address.id)}" onclick="return confirm('Are you sure to delete this address?');">Delete</a></td>
+   		</tr>
+	    #{/list}
+	  	 <tr>
+	    		<td colspan="7">#{page model:paginator /} </td>
+	    	</tr>
+	    #{/if}
+	    #{else}
+	    	<tr>
+	    		<td colspan="7">No Addresses info. <a href="@{buyer.addresses.form()}">Add</a></td>
+	    	</tr>
+	    #{/else}
+	</tbody>
+</table>

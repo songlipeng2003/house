@@ -14,7 +14,10 @@ GET     /public/                                staticDir:public
 GET     /images/                                staticDir:public/images
 
 # Catch all
-*		/user/{action}							buyer.member.{action}
+*		/user/{action}							buyer.Member.{action}
+*		/address/{action}						buyer.Addresses.{action}
+*		/favorite/{action}						buyer.Favorites.{action}
+*		/message/{action}						buyer.Messages.{action}
 *       /{controller}/{action}                  {controller}.{action}
 
 # admin

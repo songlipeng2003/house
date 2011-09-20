@@ -1,0 +1,46 @@
+#{extends 'buyer/layout.html' /} 
+#{set title:'My Addresses' /}
+${(address?.id==null)?'Add':'Edit'} Address
+#{form @save()}
+    <input type="hidden" name="address.id" value="${address?.id}">
+    
+    #{field 'address.firstName'}
+	<p class="${field.errorClass}">
+		<strong>First name: <font color="red">*</font></strong><input type="text"
+			name="${field.name}" id="firstName" value="${field.value}" />
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'address.lastName'}
+	<p class="${field.errorClass}">
+		<strong>Last name: <font color="red">*</font></strong><input type="text"
+			name="${field.name}" id="lastName" value="${field.value}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'address.country.id'}
+	<p class="${field.errorClass}">
+		<strong>Country: <font color="red">*</font></strong>
+		#{select name:'address.country.id',items:countrys,value:field.value} 
+		#{/select} 
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'address.address'}
+	<p class="${field.errorClass}">
+		<strong>Address:<font color="red">*</font></strong> <input
+			type="text" name="${field.name}" id="address"
+			value="${field.value}" /> <span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'address.phone'}
+	<p class="${field.errorClass}">
+		<strong>Phone:<font color="red">*</font></strong> <input
+			type="text" name="${field.name}" id="${field.id}"
+			value="${field.value}" /> <span class="error">${field.error}</span>
+	</p>
+	#{/field}
+
+    <p class="buttons">
+     	<a href="@{index()}">Cancel</a> or <input type="submit" value="Save this address" id="saveaddress">
+    </p>
+#{/form}
