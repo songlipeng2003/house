@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+GET     /                                       Index.index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -12,11 +12,22 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 
 GET     /images/                                staticDir:public/images
+GET     /js/                                	staticDir:public/javascripts
+GET     /css/                                	staticDir:public/stylesheets
 
-# admin
+# Admin
 *      	/admin              					module:crud
 *		/admin/{controller}/{action}			admin.{controller}.{action}
 
-# Catch all
+# Seller
+*      	/seller              					seller.Application.index
+GET     /seller/login              				seller.Application.login
+POST    /seller/authenticate              		seller.Application.authenticate
+GET     /seller/logout              			seller.Application.logout
+*		/seller/{controller}/{action}			seller.{controller}.{action}
+
+# Buyer
 *		/user/{action}							buyer.member.{action}
+
+# Catch all
 *       /{controller}/{action}                  {controller}.{action}
