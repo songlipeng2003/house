@@ -8,9 +8,10 @@ import java.util.*;
 import models.*;
 
 public class Application extends Controller {
+	public final static String SESSION_USER = "userId";
 
-    public static void index() {
-        render();
-    }
+	public static void index() {
+		render();
+	}
 
 }

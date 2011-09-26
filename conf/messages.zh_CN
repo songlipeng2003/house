@@ -33,7 +33,7 @@ crud.created=&{%s}已经创建
 crud.saved=&{%s}已经保存
 crud.deleted=&{%s}已经删除
 crud.delete.error=不能保存这个对象
-crud.search=搜素
+crud.search=搜索
 crud.none=(空)
 crud.selectValue=(请选择一个值)
 
@@ -81,8 +81,17 @@ validation.url=不是合法的URL
 validation.phone=不是合法的电话
 validation.ipv4=不是合法的IP地址
 validation.ipv6=不是合法的IPv6地址
-validation.unique=已经存在
+validation.unique=这个值(&{%2$s})已经被使用,请选择另一个.
 
+#Secure
+secure.username=Email
+secure.password=密码
+secure.remember=记住我
+secure.login=登录
+secure.logout=你已经注销.
+secure.loginSuccess=你登录成功.
+secure.loginFail=你登录失败.
+secure.mustLogin=你必须登录.
 
 #common model
 key=唯一标识

@@ -2,3 +2,14 @@
 # For example, for French create a messages.fr file
 #
 validation.unique=The value(&{%2$s}) was used,please selected another.
+
+secure.title=
+secure.username=Username
+secure.password=Password
+secure.remember=Remember me
+secure.login=Login
+secure.error=Oops, unknown username or password.
+secure.logout=You have been logged out.
+secure.loginSuccess=You login successfully.
+secure.loginFail=You login fail.
+secure.mustLogin=You must login.

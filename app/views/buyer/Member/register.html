@@ -24,14 +24,14 @@
 	#{field 'user.firstName'}
 	<p class="${field.errorClass}">
 		<strong>First name: </strong><input type="text"
-			name="${field.name}" id="firstName" value="${flash['firstName']}" />
+			name="${field.name}" id="firstName" value="${flash['user.firstName']}" />
 		<span class="error">${field.error}</span>
 	</p>
 	#{/field}
 	#{field 'user.lastName'}
 	<p class="${field.errorClass}">
 		<strong>Last name: </strong><input type="text"
-			name="${field.name}" id="lastName" value="${flash['lastName']}" /><span class="error">${field.error}</span>
+			name="${field.name}" id="lastName" value="${flash['user.lastName']}" /><span class="error">${field.error}</span>
 	</p>
 	#{/field}
 	#{field 'user.password'}

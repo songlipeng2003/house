@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,6 +22,9 @@ public class Product extends Model {
 
 	@ManyToOne
 	public ProductImage image;
+
+	@ManyToOne
+	public User user;
 
 	@Required
 	@MaxSize(value = 256)
@@ -48,4 +53,13 @@ public class Product extends Model {
 	@Min(1)
 	public Double price;
 
+	@PrePersist
+	void onPrePersist() {
+		created = new Date();
+	}
+
+	@PreUpdate
+	void onPreUpdate() {
+		updated = new Date();
+	}
 }

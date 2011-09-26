@@ -1,0 +1,31 @@
+#{extends 'buyer/layout.html' /} 
+#{set title:'Send messages' /}
+
+<h2>Send Messages</h2>
+#{if flash.error}
+<p><span class="error">${flash.error}</span></p>
+#{/if}
+#{form @save()}
+    #{field 'username'}
+	<p class="${field.errorClass}">
+		<strong>Receiver: </strong><input type="text"
+			name="${field.name}" id="username" value="${username}" readonly="readonly"/>
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'message.title'}
+	<p class="${field.errorClass}">
+		<strong>Title: <font color="red">*</font></strong><input type="text"
+			name="${field.name}" id="title" value="${field.value}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'message.content'}
+	<p class="${field.errorClass}">
+		<strong>content:<font color="red">*</font></strong>
+		<textarea rows="6" cols="50" style="width: 400px;float: right: ;" name="${field.name}" id="content">${flash['message.content']}</textarea><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+    <p class="buttons">
+     	<a href="@{index()}">Cancel</a> or <input type="submit" value="Send" id="sendmessage">
+    </p>
+#{/form}

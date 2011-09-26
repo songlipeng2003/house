@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
@@ -28,6 +30,10 @@ public class Category extends Model {
 	@PrePersist
 	void updateKeyName() {
 		key = StringUtils.toUpperCaseName(name);
+	}
+
+	public static List<Category> findTop() {
+		return find("parent is null").fetch();
 	}
 
 	@Override

@@ -80,6 +80,7 @@ public class User extends Model {
 		updated = new Date();
 	}
 
+
 	public enum UserType {
 		BUYER, SELLER, ADMIN
 	}
@@ -97,5 +98,9 @@ public class User extends Model {
 		}
 
 		return user;
+	}
+
+	public static User findByUsername(String username) {
+		return User.find("byUsername", username).first();
 	}
 }

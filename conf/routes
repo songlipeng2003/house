@@ -16,6 +16,15 @@ GET     /js/                                	staticDir:public/javascripts
 GET     /css/                                	staticDir:public/stylesheets
 
 # Admin
+=======
+# Catch all
+*		/user/{action}							buyer.Member.{action}
+*		/address/{action}						buyer.Addresses.{action}
+*		/favorite/{action}						buyer.Favorites.{action}
+*		/message/{action}						buyer.Messages.{action}
+*       /{controller}/{action}                  {controller}.{action}
+
+# admin
 *      	/admin              					module:crud
 *		/admin/{controller}/{action}			admin.{controller}.{action}
 

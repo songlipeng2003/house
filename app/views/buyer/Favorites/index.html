@@ -1,0 +1,32 @@
+#{extends 'buyer/layout.html' /} 
+#{set title:'My Favorites' /}
+
+<h2>My Favorites</h2>
+#{if flash.error}
+<p><span class="error">${flash.error}</span></p>
+#{/if}
+#{if flash.success}
+<p><span class="success">${flash.success}</span></p>
+#{/if}
+<table>
+	<tbody>
+		#{if addresses && addresses.size()>0}
+	    #{list addresses, as:'address'}
+	    <tr>
+	    	<td>${address_index}</td>
+   			<td >${address.firstName}</td>
+   			<td >${address.lastName}</td>
+   			<td >${address.country?.name}</td>
+   			<td >${address.address}</td>
+   			<td >${address.phone}</td>
+   			<td><a href="@{form(address.id)}">Edit</a></td>
+   		</tr>
+	    #{/list}
+	    #{/if}
+	    #{else}
+	    	<tr>
+	    		<td colspan="7">No Favorites . <a href="@{Application.index()}">Shopping</a></td>
+	    	</tr>
+	    #{/else}
+	</tbody>
+</table>

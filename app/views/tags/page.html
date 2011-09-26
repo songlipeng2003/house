@@ -1,0 +1,39 @@
+<span class="paginator"> 
+%{ 
+int all = 7 
+int current = _model.offset / _model.limit 
+int totalPages = Math.ceil(_model.total / _model.limit) 
+int first = Math.max(0, current - all); 
+ }% 
+<!--<span class=""><b>Strona ${current + 1} z ${totalPages == 0 ? 1 : 
+totalPages}</b></span> 
+&nbsp; 
+--> 
+%{ 
+ if(current > 0) { 
+}% <a class="paginator_element" href="${_model.getAction(0).raw()}"> |< </a> 
+
+<a class="paginator_element" href="${_model.getAction(current - 1).raw()}"> 
+<< </a> %{ 
+} 
+
+ for(def page = first; page < current; page++) { 
+}% <a href="${_model.getAction(page).raw()}"> ${page + 1} </a> %{ 
+} 
+
+ }% <span class="paginator_element paginator_current">${current + 1}</span> 
+%{ 
+    for(def page = current + 1; page < Math.min(totalPages, current + all - 
+1); page++) { 
+       }% <a class="paginator_element" 
+href="${_model.getAction(page).raw()}"> ${page + 1} </a> %{ 
+    } 
+    if(current < totalPages - 1) { 
+     }%<a class="paginator_element" href="${_model.getAction(current + 
+1).raw()}"> ${">>"} </a> 
+     <a class="paginator_element" href="${_model.getAction(totalPages - 
+1).raw()}"> ${">|"} </a> %{ 
+    } 
+}% 
+
+</span> 

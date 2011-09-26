@@ -11,3 +11,5 @@ require:
     - play -> menu 1.0c
     - play -> migrate 1.4
     - play -> messages 1.1.1
+    - play -> secure
+    - play -> crud
