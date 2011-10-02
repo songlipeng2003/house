@@ -110,7 +110,7 @@ public class Member extends Controller {
 	 * 进入注册页面
 	 */
 	public static void register() {
-		render();
+		render("register.html");
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class Member extends Controller {
 	 * 进入登录页面
 	 */
 	public static void login() {
-		render();
+		render("login.html");
 	}
 
 	/**

@@ -1,0 +1,102 @@
+#{extends 'main.html' /}
+
+<div class="grid_12">
+	<div id="notification"></div>
+	<div id="column-right">
+		<div class="box">
+			<div class="box-heading">Account</div>
+			<div class="box-content">
+				<ul>
+					<li><a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/login">Login</a>
+						/ <a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/register">Register</a>
+					</li>
+					<li><a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/forgotten">Forgotten
+							Password</a>
+					</li>
+					<li><a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/account">My
+							Account</a>
+					</li>
+					<li><a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/wishlist">Wish
+							List</a>
+					</li>
+					<li><a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/order">Order
+							History</a>
+					</li>
+					<li><a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/download">Downloads</a>
+					</li>
+					<li><a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/return">Returns</a>
+					</li>
+					<li><a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/transaction">Transactions</a>
+					</li>
+					<li><a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/newsletter">Newsletter</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div class="breadcrumb">
+			<a
+				href="http://tzelewski.co.uk/template/gentle/index.php?route=common/home">Home</a>
+			» <a
+				href="http://tzelewski.co.uk/template/gentle/index.php?route=account/account">Account</a>
+			» <a
+				href="http://tzelewski.co.uk/template/gentle/index.php?route=account/login">Login</a>
+		</div>
+		<h1>Account Login</h1>
+		<div class="login-content">
+			<div class="left">
+				<h2>New Customer</h2>
+				<div class="content">
+					<p>
+						<b>Register Account</b>
+					</p>
+					<p>By creating an account you will be able to shop faster, be
+						up to date on an order's status, and keep track of the orders you
+						have previously made.</p>
+					<a
+						href="http://tzelewski.co.uk/template/gentle/index.php?route=account/register"
+						class="button"><span>Continue</span>
+					</a>
+				</div>
+			</div>
+			<div class="right">
+				<h2>Returning Customer</h2>
+				<form
+					action="http://tzelewski.co.uk/template/gentle/index.php?route=account/login"
+					method="post" enctype="multipart/form-data" id="login">
+					<div class="content">
+						<p>I am a returning customer</p>
+						<b>E-Mail Address:</b><br> <input type="text" name="email"
+							value=""> <br> <br> <b>Password:</b><br> <input
+							type="password" name="password" value=""> <br> <a
+							href="http://tzelewski.co.uk/template/gentle/index.php?route=account/forgotten">Forgotten
+							Password</a><br> <br> <a onclick="$('#login').submit();"
+							class="button"><span>Login</span>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	<!--
+		$('#login input').keydown(function(e) {
+			if (e.keyCode == 13) {
+				$('#login').submit();
+			}
+		});
+	//-->
+	</script>
+
+</div>
