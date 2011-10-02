@@ -3,7 +3,9 @@ package models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
@@ -25,6 +27,9 @@ public class Category extends Model {
 
 	@ManyToOne
 	public Category parent;
+
+	@OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+	public List<Category> children;
 
 	@PreUpdate
 	@PrePersist

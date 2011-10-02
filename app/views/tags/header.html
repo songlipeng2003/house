@@ -1,7 +1,6 @@
-
 <div id="header" class="grid_12">
 	<div id="logo">
-		<a href=""><img src="/images/logo-gentle.png" title="" alt="" /> </a>
+		<a href="@{Index.index}"><img src="/images/logo-gentle.png" title="" alt="" /> </a>
 	</div>
 
 	<div id="header-right">
@@ -32,15 +31,15 @@
 			<div class="button-search"></div>
 		</div>
 		<div id="welcome">
-			Welcome visitor you can <a href="/login">login</a>
-			or <a class="register_welcome no_right_margin" href="/register">create an account</a>
+			Welcome visitor you can <a href="@{buyer.Member.login}">login</a>
+			or <a class="register_welcome no_right_margin" href="@{buyer.Member.register}">create an account</a>
 		</div>
 	</div>
 </div>
 <div class="spacer clearfix"></div>
 <div id="header-bottom" class="grid_12">
 	<div class="links">
-		<a class="fourth_color" href="/">Home</a>
+		<a class="fourth_color" href="@{Index.index}">Home</a>
 		<a class="fourth_color" href="/wishlist" id="wishlist_total">Wish List (0)</a>
 		<a class="fourth_color" href="/account">My Account</a>
 		<a class="fourth_color" href="/cart">Shopping Cart</a>
@@ -59,115 +58,19 @@
 </div>
 <div id="menu" class="third_color_bg grid_12">
 	<ul>
-		<li><a class="sixth_color_bg"
-			href="0">Desktops</a>
-
+		#{list items:models.Category.findTop(), as:'category'}
+		<li>
+			<a class="sixth_color_bg" href="@{Category.view(category.id)}">${category.name}</a>
+			#{if category.children.size()>0}
 			<div class="sixth_color_border">
 				<ul>
-					<li><a class="secondary_color"
-						href="0_26">PC
-							(0)</a></li>
-					<li><a class="secondary_color"
-						href="0_27">Mac
-							(1)</a></li>
+					#{list items:category.children, as:'subCategory'}
+					<li><a class="secondary_color" href="@{Category.view(subCategory.id)}">${subCategory.name}</a></li>
+					#{/list}
 				</ul>
 			</div>
+			#{/if}
 		</li>
-
-		<li><a class="sixth_color_bg"
-			href="8">Laptops
-				&amp; Notebooks</a>
-
-			<div class="sixth_color_border">
-				<ul>
-					<li><a class="secondary_color"
-						href="8_46">Macs
-							(0)</a></li>
-					<li><a class="secondary_color"
-						href="8_45">Windows
-							(0)</a></li>
-				</ul>
-			</div>
-		</li>
-
-		<li><a class="sixth_color_bg"
-			href="7">Software</a>
-
-		</li>
-
-		<li><a class="sixth_color_bg"
-			href="3">Cameras</a>
-
-		</li>
-
-		<li><a class="sixth_color_bg"
-			href="4">MP3
-				Players</a>
-
-			<div class="sixth_color_border">
-				<ul>
-					<li><a class="secondary_color"
-						href="4_43">test
-							11 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_44">test
-							12 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_47">test
-							15 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_48">test
-							16 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_49">test
-							17 (0)</a></li>
-				</ul>
-				<ul>
-					<li><a class="secondary_color"
-						href="4_50">test
-							18 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_51">test
-							19 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_52">test
-							20 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_53">test
-							21 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_54">test
-							22 (0)</a></li>
-				</ul>
-				<ul>
-					<li><a class="secondary_color"
-						href="4_55">test
-							23 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_56">test
-							24 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_38">test
-							4 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_37">test
-							5 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_39">test
-							6 (0)</a></li>
-				</ul>
-				<ul>
-					<li><a class="secondary_color"
-						href="4_40">test
-							7 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_41">test
-							8 (0)</a></li>
-					<li><a class="secondary_color"
-						href="4_42">test
-							9 (0)</a></li>
-				</ul>
-			</div>
-		</li>
+		#{/list}
 	</ul>
 </div>
