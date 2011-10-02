@@ -1,0 +1,78 @@
+#{extends 'main.html' /} #{set title:'Join free' /}
+
+<h2>Register</h2>
+#{ifErrors}
+   <h1>Oops…</h1>
+#{/ifErrors}
+#{form @seller.Users.reg()}
+	#{field 'user.username'}
+	<p class="${field.errorClass}">
+		<strong>Username: </strong><font color="red">*</font> <input
+			type="text" name="${field.name}" id="username"
+			value="${flash['user.username']}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'user.email'}
+	<p class="${field.errorClass}">
+		<strong>Email Address: </strong><font color="red">*</font>
+		<input type="text" name="${field.name}" value="${flash['user.email']}" />
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'user.password'}
+	<p class="${field.errorClass}">
+		<strong>Password: </strong><font color="red">*</font>
+		<input type="password" name="${field.name}" /> <span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'user.rePassword'}
+	<p class="${field.errorClass}">
+		<strong>Re - enter password:</strong> <font color="red">*</font>
+		 <input type="password" name="${field.name}"/><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'user.firstName'}
+	<p class="${field.errorClass}">
+		<strong>First name: </strong>
+		<input type="text" name="${field.name}" value="${flash['user.firstName']}" />
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'user.lastName'}
+	<p class="${field.errorClass}">
+		<strong>Last name: </strong>
+		<input type="text" name="${field.name}" value="${flash['user.lastName']}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	
+	#{field 'seller.category.id'}
+	<p class="${field.errorClass}">
+		<strong>Category: </strong>
+		%{categories=models.Category.findTop()}%
+		#{select field.name, items:categories}#{/select}
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'seller.companyName'}
+	<p class="${field.errorClass}">
+		<strong>Company Name: </strong><input type="text"
+			name="${field.name}" value="${flash['seller.companyName']}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'seller.companyAddress'}
+	<p class="${field.errorClass}">
+		<strong>Company Address: </strong><input type="text"
+			name="${field.name}" value="${flash['seller.companyAddress']}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'seller.mobile'}
+	<p class="${field.errorClass}">
+		<strong>Mobile: </strong><input type="text"
+			name="${field.name}" value="${flash['seller.mobile']}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p>
+		#{authenticityToken /}
+		<input type="submit" value="Create New Account" />
+	</p>
+#{/form}
