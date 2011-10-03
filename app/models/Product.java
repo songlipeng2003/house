@@ -38,7 +38,7 @@ public class Product extends Model {
 	public Double height;
 	public Double high;
 
-	@Max(value = 64000)
+	@MaxSize(value = 64000)
 	public String description;
 
 	@Temporal(TemporalType.TIMESTAMP)

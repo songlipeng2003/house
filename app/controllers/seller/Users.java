@@ -1,15 +1,19 @@
 package controllers.seller;
 
 import controllers.Security;
+import models.Country;
 import models.Seller;
 import models.User;
 import models.User.UserType;
+import play.data.validation.Required;
 import play.data.validation.Valid;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.With;
 
 @With(Security.class)
 public class Users extends Controller {
+
 	public static void register() {
 		render();
 	}
@@ -32,5 +36,56 @@ public class Users extends Controller {
 			flash.success("Thanks for registation %s", user.username);
 			render();
 		}
+	}
+
+	/**
+	 * 个人信息配置
+	 */
+	public static void setting() {
+		User user = Application.getSessionUser();
+		Seller seller=Seller.findById(user.id);
+		render(user,seller);
+	}
+
+	/**
+	 * 保存个人信息配置
+	 */
+	public static void savebasesetting(String firstName, String lastName,@Valid Seller seller) {
+		User user = Application.getSessionUser();
+		user.firstName = firstName;
+		user.lastName = lastName;
+		user.save();
+		seller.user=user;
+		seller.save();
+		flash.success("Save successfully");
+		setting();
+	}
+	
+	
+	public static void resetpass(){
+		render();
+	}
+
+	/**
+	 * 修改密码信息
+	 */
+	public static void savepasssetting(@Required String oldpassword,
+			@Required String password, @Required String repassword) {
+		validation.equals(password, repassword)
+				.message(Messages.get("user.passrepass.notequip"))
+				.key("password");
+		User user = Application.getSessionUser();
+		validation.equals(user.password, oldpassword)
+				.message(Messages.get("user.oldpassword.notcorrect"))
+				.key("oldpassword");
+		if (validation.hasErrors()) {
+			validation.keep();
+			resetpass();
+		}
+		user.password = password;
+		user.save();
+
+		flash.success(Messages.get("user.pass.reset"));
+		resetpass();
 	}
 }

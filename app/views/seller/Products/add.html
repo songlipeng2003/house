@@ -1,0 +1,51 @@
+#{extends 'seller/main.html' /} 
+#{set title:'添加产品' /}
+
+<h2>添加产品</h2>
+#{ifErrors}
+<p><span class="error">添加失败</span></p>
+#{/ifErrors}
+#{form @seller.Products.save()}
+	#{field 'product.name'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.name'}: </strong><font color="red">*</font> <input
+			type="text" name="${field.name}" id="name"
+			value="${flash['product.name']}" size="30" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'product.key'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.key'}: </strong>
+		<input type="text" name="${field.name}" value="${flash['product.key']}" />
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'product.price'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.price'}: </strong><font color="red">*</font>
+		<input type="text" name="${field.name}"  value="${flash['product.price']}"/>USD<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'product.isOn'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.ison'}: </strong><font color="red">*</font>
+		<input type="checkbox" name="${field.name}" value="1" checked="checked" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p class="${field.errorClass}">
+		<strong>&{'product.size'}:</strong>
+		 <input type="text" name="product.height" size="5"  value="${flash['product.height']}"/>(cm) * <input type="text" name="product.width" size="5" value="${flash['product.width']}" />(cm) * <input type="text" name="product.high" size="5"  value="${flash['product.high']}" />(cm)
+		 <span class="error">${field.width}</span>
+	</p>
+	#{field 'product.description'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.description'}: </strong>
+		<textarea rows="6" cols="50" name="${field.name}" >${flash['product.description']}</textarea>
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p>
+		<input type="submit" value="添加" />
+		<a href="@{index()}">取消</a>
+	</p>
+#{/form}

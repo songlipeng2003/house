@@ -1,0 +1,40 @@
+#{extends 'seller/main.html' /} 
+#{set title:'店铺信息管理' /}
+
+<h2>店铺信息修改</h2>
+#{ifErrors}
+<p><span class="error">保存失败</span></p>
+#{/ifErrors}
+#{if flash.error}
+<span class="error">${flash.error}</span>
+#{/if}
+#{if flash.success}
+    <p class="success">${flash.success}</p>
+#{/if}
+#{form @saveshopinfo()}
+	<input name="shop.id" type="hidden" value="${shop?.id}"/>
+	#{field 'shop.name'}
+	<p class="${field.errorClass}">
+		<strong>&{'shop.name'}: </strong><font color="red">*</font> <input
+			type="text" name="${field.name}" id="name"
+			value="${shop?.name}" size="30" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'shop.key'}
+	<p class="${field.errorClass}">
+		<strong>&{'shop.key'}: </strong>
+		<input type="text" name="${field.name}" value="${shop?.key}" />
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'shop.description'}
+	<p class="${field.errorClass}">
+		<strong>&{'shop.description'}: </strong>
+		<textarea rows="6" cols="50" name="${field.name}" >${shop?.description}</textarea>
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p>
+		<input type="submit" value="保存" />
+	</p>
+#{/form}

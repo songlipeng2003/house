@@ -1,0 +1,45 @@
+#{extends 'seller/main.html' /} 
+#{set title:'产品 管理' /}
+
+<h2>产品管理</h2>
+<h3><a href="@{add()}">添加产品</a></h3>
+#{if flash.error}
+<p><span class="error">${flash.error}</span></p>
+#{/if}
+#{if flash.success}
+<p><span class="success">${flash.success}</span></p>
+#{/if}
+<table width="100%">
+	<thead>
+		<tr>
+			<th>Index</th>
+			<th>&{'product.name'}</th>
+			<th>&{'product.image'}</th>
+			<th>&{'product.price'}(USD)</th>
+			<th>&{'product.ison'}</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		#{if products && products.size()>0}
+	    #{list products, as:'product'}
+	    <tr>
+	    	<td>${product_index}</td>
+   			<td >${product.name}</td>
+   			<td >${product.key}</td>
+   			<td >${product.price}</td>
+   			<td >${product.isOn?'是':'否'}</td>
+   			<td><a href="@{edit(product.id)}">修改</a>&nbsp;&nbsp;<a href="@{delete(product.id)}" onclick="return confirm('您确认要删除该产品吗？?');">删除</a></td>
+   		</tr>
+	    #{/list}
+	  	 <tr>
+	    	<td colspan="7"> </td>
+	    </tr>
+	    #{/if}
+	    #{else}
+	    	<tr>
+	    		<td colspan="7">No Products info. <a href="@{add()}">添加产品</a></td>
+	    	</tr>
+	    #{/else}
+	</tbody>
+</table>

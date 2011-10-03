@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="${_response_encoding}">
+<meta charset="${_response_encoding}"/>
 <title>#{get 'title' /}</title>
 <link href="/css/user/layout.css" rel="stylesheet" type="text/css" />
 <link href="/css/wysiwyg.css" rel="stylesheet" type="text/css" />
@@ -44,7 +44,7 @@
             #{if session.userid }
             <p class="username">Administrator</p>
             <p class="userbtn"><a href="#" title="">Profile</a></p>
-            <p class="userbtn"><a href="@{buyer.Member.logout()}" title="">Log out</a></p>
+            <p class="userbtn"><a href="@{seller.Application.logout()}" title="">Log out</a></p>
 	    	#{/if}
         </div>
         <div class="notifications">
@@ -62,9 +62,9 @@
             <li>
                 <a class="expanded heading">商铺管理</a>
                  <ul class="navigation">
-                    <li><a href="#" title="">商铺信息修改</a></li>
-                    <li><a href="#" title="">商铺分类管理</a></li>
-                    <li><a href="#" title="">产品管理</a></li>
+                    <li><a href="@{seller.Shopinfo.shopinfo()}" title="">商铺信息修改</a></li>
+                    <li><a href="@{seller.Shopinfo.categorylist()}" title="">商铺分类管理</a></li>
+                    <li><a href="@{seller.Products.index()}" title="">产品管理</a></li>
                 </ul>
             </li>
             <li>
@@ -78,8 +78,8 @@
             </li>
             <li><a class="expanded heading">账户管理</a>
                 <ul class="navigation">
-                    <li><a href="#" title="" class="likelogin">修改账户信息</a></li>
-                    <li><a href="#" title="">修改密码</a></li>
+                    <li><a href="@{seller.Users.setting()}" title="修改账户信息" class="likelogin">修改账户信息</a></li>
+                    <li><a href="@{seller.Users.resetpass()}" title="修改密码">修改密码</a></li>
                     <li><a href="#" title="">修改邮箱</a></li>
                 </ul>
             </li>            

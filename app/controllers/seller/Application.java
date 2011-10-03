@@ -1,5 +1,8 @@
 package controllers.seller;
 
+import java.util.List;
+
+import models.Country;
 import models.User;
 import models.User.UserType;
 import play.data.validation.Email;
@@ -45,8 +48,12 @@ public class Application extends controllers.Application {
 		session.clear();
 		login();
 	}
-	
-	public static void index(){
+
+	public static void index() {
 		render();
 	}
+	public static User getSessionUser() {
+		return User.findById(Long.parseLong(session.get(SESSION_USER)));
+	}
+
 }

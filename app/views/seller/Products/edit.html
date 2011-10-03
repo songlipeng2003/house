@@ -1,0 +1,56 @@
+#{extends 'seller/main.html' /} 
+#{set title:'修改产品' /}
+
+<h2>修改产品</h2>
+#{ifErrors}
+<p><span class="error">修改失败</span></p>
+#{/ifErrors}
+#{form @seller.Products.update()}
+	<input name="product.id" value="${product.id}" type="hidden">
+	#{field 'product.name'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.name'}: </strong><font color="red">*</font> <input
+			type="text" name="${field.name}" id="name"
+			value="${product.name}" size="30" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'product.key'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.key'}: </strong>
+		<input type="text" name="${field.name}" value="${product.key}" />
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'product.price'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.price'}: </strong><font color="red">*</font>
+		<input type="text" name="${field.name}"  value="${product.price}"/>USD<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'product.isOn'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.ison'}: </strong><font color="red">*</font>
+		#{if product.isOn}
+			<input type="checkbox" name="${field.name}" value="1" checked="checked" /><span class="error">${field.error}</span>
+		#{/if}
+		#{else}
+			<input type="checkbox" name="${field.name}" value="1" /><span class="error">${field.error}</span>
+		#{/else}		
+	</p>
+	#{/field}
+	<p class="${field.errorClass}">
+		<strong>&{'product.size'}:</strong>
+		 <input type="text" name="product.height" size="5"  value="${product.height}"/>(cm) * <input type="text" name="product.width" size="5" value="${product.width}" />(cm) * <input type="text" name="product.high" size="5"  value="${product.high}" />(cm)
+		 <span class="error">${field.width}</span>
+	</p>
+	#{field 'product.description'}
+	<p class="${field.errorClass}">
+		<strong>&{'product.description'}: </strong>
+		<textarea rows="6" cols="50" name="${field.name}" >${product.description}</textarea>
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p>
+		<input type="submit" value="保存" />
+	</p>
+#{/form}

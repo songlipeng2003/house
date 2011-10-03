@@ -1,0 +1,41 @@
+#{extends 'seller/main.html' /} 
+#{set title:'修改密码' /}
+
+<h2>修改密码</h2>
+
+<p>
+#{ifErrors}
+修改失败
+#{/ifErrors} 
+#{if flash.error}
+<span class="error">${flash.error}</span>
+#{/if}
+</p>
+#{if flash.success}
+    <p class="success">${flash.success}</p>
+#{/if}
+<div id="changepassdiv">
+#{form @seller.Users.savepasssetting()}
+	#{field 'oldpassword'}
+	<p class="${field.errorClass}">
+		<strong>原始密码: </strong><font color="red">*</font> <input
+			type="password" name="${field.name}" id="oldpassword" /> <span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'password'}
+	<p class="${field.errorClass}">
+		<strong>新密码: </strong><font color="red">*</font> <input
+			type="password" name="${field.name}" id="password" /> <span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'repassword'}
+	<p class="${field.errorClass}">
+		<strong>重新输入密码:</strong> <font color="red">*</font>
+		 <input type="password" name="${field.name}" id="repassword" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p>
+		<input type="submit" value="修改 " />
+	</p>
+#{/form}
+</div>

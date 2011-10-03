@@ -1,0 +1,39 @@
+#{extends 'seller/main.html' /} 
+#{set title:'商铺分类管理' /}
+
+<h2>商铺分类管理</h2>
+<h3><a href="@{shopcateform()}">添加分类</a></h3>
+#{if flash.error}
+<p><span class="error">${flash.error}</span></p>
+#{/if}
+#{if flash.success}
+<p><span class="success">${flash.success}</span></p>
+#{/if}
+<table width="100%">
+	<thead>
+		<tr>
+			<th>Index</th>
+			<th>&{'shopcate.name'}</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		#{if shopcates && shopcates.size()>0}
+	    #{list shopcates, as:'shopcate'}
+	    <tr>
+	    	<td>${shopcate_index}</td>
+   			<td >${shopcate.name}</td>
+   			<td><a href="@{shopcateform(shopcate.id)}">修改</a>&nbsp;&nbsp;<a href="@{deleteshopcate(shopcate.id)}" onclick="return confirm('您确认要删除该分类吗？?');">删除</a></td>
+   		</tr>
+	    #{/list}
+	  	 <tr>
+	    	<td colspan="73"> </td>
+	    </tr>
+	    #{/if}
+	    #{else}
+	    	<tr>
+	    		<td colspan="73">没有分类信息. <a href="@{shopcateform()}">添加分类</a></td>
+	    	</tr>
+	    #{/else}
+	</tbody>
+</table>

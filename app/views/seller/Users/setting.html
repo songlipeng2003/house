@@ -1,0 +1,68 @@
+#{extends 'seller/main.html' /} 
+#{set title:'修改账户信息' /}
+
+<h2>修改账户信息</h2>
+
+<p>
+#{ifErrors}
+保存失败<br/>
+#{/ifErrors} 
+#{if flash.error}
+<span class="error">${flash.error}</span>
+#{/if}
+</p>
+#{if flash.success}
+    <p class="success">${flash.success}</p>
+#{/if}
+<div id="baseinfodiv" >
+#{form @savebasesetting()}
+	<p>
+		<strong>&{'user.username'}:</strong>  ${user.username}
+	</p>
+	<p>
+		<strong>&{'user.email'}: </strong>${user.email}
+	</p>
+	#{field 'firstName'}
+	<p class="${field.errorClass}">
+		<strong>&{'user.firstName'}: </strong><input type="text"
+			name="${field.name}" id="firstName" value="${user.firstName}" />
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'lastName'}
+	<p class="${field.errorClass}">
+		<strong>&{'user.lastName'}: </strong><input type="text"
+			name="${field.name}" id="lastName" value="${user.lastName}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'seller.category.id'}
+	<p class="${field.errorClass}">
+		<strong>&{'seller.category'}: </strong>
+		%{categories=models.Category.findTop()}%
+		#{select field.name, items:categories}#{/select}
+		<span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'seller.companyName'}
+	<p class="${field.errorClass}">
+		<strong>&{'seller.companyName'}: </strong><input type="text"
+			name="${field.name}" value="${seller?.companyName}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'seller.companyAddress'}
+	<p class="${field.errorClass}">
+		<strong>&{'seller.companyAddress'}: </strong><input type="text"
+			name="${field.name}" value="${seller?.companyAddress}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	#{field 'seller.mobile'}
+	<p class="${field.errorClass}">
+		<strong>&{'seller.mobile'}: </strong><input type="text"
+			name="${field.name}" value="${seller?.mobile}" /><span class="error">${field.error}</span>
+	</p>
+	#{/field}
+	<p>
+		<input type="submit" value="保存" />
+	</p>
+#{/form}
+</div>
