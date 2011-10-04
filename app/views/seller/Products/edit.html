@@ -5,7 +5,7 @@
 #{ifErrors}
 <p><span class="error">修改失败</span></p>
 #{/ifErrors}
-#{form @seller.Products.update()}
+#{form @seller.Products.update(), method:'POST',enctype:'multipart/form-data'  }
 	<input name="product.id" value="${product.id}" type="hidden">
 	#{field 'product.name'}
 	<p class="${field.errorClass}">
@@ -42,6 +42,13 @@
 		<strong>&{'product.size'}:</strong>
 		 <input type="text" name="product.height" size="5"  value="${product.height}"/>(cm) * <input type="text" name="product.width" size="5" value="${product.width}" />(cm) * <input type="text" name="product.high" size="5"  value="${product.high}" />(cm)
 		 <span class="error">${field.width}</span>
+	</p>
+	<p>
+		<strong>&{'product.image'}:</strong>
+		<input type="file" id="picture" name="picture"/>
+		#{if product?.image!=null}
+			<img alt="${product.image.filename}" src="/${product.image.path}"/>
+		#{/if}
 	</p>
 	#{field 'product.description'}
 	<p class="${field.errorClass}">

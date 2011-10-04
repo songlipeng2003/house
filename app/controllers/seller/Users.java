@@ -55,8 +55,13 @@ public class Users extends Controller {
 		user.firstName = firstName;
 		user.lastName = lastName;
 		user.save();
-		seller.user=user;
-		seller.save();
+
+		Seller seller2=Seller.findById(user.id);
+		seller2.companyAddress=seller.companyAddress;
+		seller2.companyName=seller.companyName;
+		seller2.category=seller.category;
+		seller2.mobile=seller.mobile;
+		seller2.save();
 		flash.success("Save successfully");
 		setting();
 	}

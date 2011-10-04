@@ -5,7 +5,7 @@
 #{ifErrors}
 <p><span class="error">添加失败</span></p>
 #{/ifErrors}
-#{form @seller.Products.save()}
+#{form @seller.Products.save(), method:'POST',enctype:'multipart/form-data'}
 	#{field 'product.name'}
 	<p class="${field.errorClass}">
 		<strong>&{'product.name'}: </strong><font color="red">*</font> <input
@@ -36,6 +36,10 @@
 		<strong>&{'product.size'}:</strong>
 		 <input type="text" name="product.height" size="5"  value="${flash['product.height']}"/>(cm) * <input type="text" name="product.width" size="5" value="${flash['product.width']}" />(cm) * <input type="text" name="product.high" size="5"  value="${flash['product.high']}" />(cm)
 		 <span class="error">${field.width}</span>
+	</p>
+	<p>
+		<strong>&{'product.image'}:</strong>
+		<input type="file" id="picture" name="picture"/>
 	</p>
 	#{field 'product.description'}
 	<p class="${field.errorClass}">
